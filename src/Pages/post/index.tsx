@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface IPostProps {
+interface ICreatePostProps {
 }
 
-const Post: React.FunctionComponent<IPostProps> = (props) => {
-  return <div>Post</div>;
+const CreatePost: React.FunctionComponent<ICreatePostProps> = (props) => {
+  return <div>Create Post</div>;
 };
 
-export default Post;
+export default CreatePost;
