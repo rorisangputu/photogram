@@ -1,16 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import env from 'dotenv';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBAFNQoFjFr8ptaDlBAleBHmdVlgPIA0Zc",
-  authDomain: "photogram-b5cc1.firebaseapp.com",
-  projectId: "photogram-b5cc1",
-  storageBucket: "photogram-b5cc1.appspot.com",
-  messagingSenderId: "28322832251",
-  appId: "1:28322832251:web:968b5e6ce4a4d9ea07e7de"
+  apiKey: import.meta.env.VITE_FB_API_KEY ,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MSG_SENDER_ID,
+  appId:import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
