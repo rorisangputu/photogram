@@ -5,7 +5,8 @@ import Home from "./Pages/home";
 import SignUp from "./Pages/signup";
 import Profile from "./Pages/profile";
 import MyPhotos from "./Pages/myphotos";
-export const router = createBrowserRouter([
+
+const router = createBrowserRouter([
     {
         path: '/home',
         element: <Home />,
@@ -33,3 +34,5 @@ export const router = createBrowserRouter([
     },
 
 ])
+
+export default router;
