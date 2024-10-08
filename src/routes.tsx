@@ -8,7 +8,7 @@ import MyPhotos from "./Pages/myphotos";
 
 const router = createBrowserRouter([
     {
-        path: '/home',
+        path: '/',
         element: <Home />,
         errorElement: <Error/>
     },
