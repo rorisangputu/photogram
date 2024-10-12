@@ -5,7 +5,7 @@ interface IProtectedRoutesProps {
 }
 
 const ProtectedRoutes: React.FunctionComponent<IProtectedRoutesProps> = (props) => {
-    const isAuth: boolean = true;
+    const isAuth: boolean = false;
     const location = useLocation(); //gives path that is in browser url. 
 
     //If user is authenticated all protected routes will be displayed
