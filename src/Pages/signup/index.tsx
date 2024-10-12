@@ -50,7 +50,7 @@ const SignUp: React.FunctionComponent<ISignUpProps> = (props) => {
     try {
       console.log("The user info is:", userInfo);
       await signUp(userInfo.email, userInfo.password);
-      navigate("/");
+      navigate("/login");
 
     } catch (error) {
       console.log("Error:", error)
