@@ -1,6 +1,10 @@
 import { auth } from '@/firebaseConfig';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, User } from 'firebase/auth';
-import { createContext } from 'react';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, User } from 'firebase/auth';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+interface IUserAuthProviderProps{
+    children: React.ReactNode; 
+}
 
 type AuthContextData = {
     user: User | null;
@@ -28,9 +32,44 @@ const googleSignIn = () => {
 }
 
 export const userAuthContext = createContext<AuthContextData>({
-    user: null;
+    user: null,
     logIn,
     signUp,
     logOut,
     googleSignIn
 })
+
+export const UserAuthProvider: React.FunctionComponent<IUserAuthProviderProps> = ({ children }) => {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("The logged in user state is:", user);
+                setUser(user);
+            }
+
+            return () => {
+                unsubscribe();
+            }
+        });
+    });
+
+    const value: AuthContextData = {
+        user,
+        logIn,
+        signUp,
+        logOut,
+        googleSignIn
+    };
+
+    return (
+        <userAuthContext.Provider value={value}>
+            {children}
+        </userAuthContext.Provider>
+    )
+};
+ 
+export const useUserAuth = () => {
+    return useContext(userAuthContext);
+};
