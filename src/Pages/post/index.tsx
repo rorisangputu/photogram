@@ -36,7 +36,11 @@ const CreatePost: React.FunctionComponent<ICreatePostProps> = (props) => {
     e.preventDefault();
     console.log("The post is: ", post);
     if (user != null) {
-      
+      const newPost: Post = {
+        ...post,
+        userId: user?.uid || null
+      };
+      console.log("Final post: ", newPost);
     }
   }
 
